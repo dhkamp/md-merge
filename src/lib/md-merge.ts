@@ -1,9 +1,12 @@
 import { isAbsolute } from "@std/path/is-absolute";
 import { getImports } from "./md_importer/md_importer.ts";
 import { join } from "@std/path/join";
+import { dirname } from "@std/path/dirname";
 
-export async function mdMerge(path: string): Promise<string> {
-  const absPath = isAbsolute(path) ? path : join(Deno.cwd(), path);
+export async function mdMerge(inputPath: string) {
+  const absPath = isAbsolute(inputPath)
+    ? inputPath
+    : join(Deno.cwd(), inputPath);
 
   const content = await Deno.readTextFile(absPath);
   const imports = await getImports(absPath, content);
@@ -13,5 +16,5 @@ export async function mdMerge(path: string): Promise<string> {
     outcontent = outcontent.replace(`<!-- md-merge ${key} -->`, value);
   }
 
-  return outcontent;
+  await Deno.writeTextFile(join(dirname(absPath), "output.md"), outcontent);
 }
