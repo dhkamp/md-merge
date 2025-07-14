@@ -11,8 +11,11 @@
       "program": "${workspaceFolder}/src/main.ts",
       "cwd": "${workspaceFolder}",
       "env": {},
-      "runtimeExecutable": "/home/david/.deno/bin/deno",
-      "args": ["./samples/root.md", "./samples/output.md"],
+      "runtimeExecutable": "deno",
+      "args": [
+        "./samples/simple-merge/source/root.md",
+        "./samples/simple-merge/source/output.md"
+      ],
       "runtimeArgs": ["run", "--unstable", "--inspect-wait", "--allow-all"],
       "attachSimplePort": 9229
     }
