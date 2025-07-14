@@ -12,10 +12,7 @@
       "cwd": "${workspaceFolder}",
       "env": {},
       "runtimeExecutable": "deno",
-      "args": [
-        "./samples/simple-merge/source/root.md",
-        "./samples/simple-merge/source/output.md"
-      ],
+      "args": ["./samples/simple-merge/source/root.md", "--outname test"],
       "runtimeArgs": ["run", "--unstable", "--inspect-wait", "--allow-all"],
       "attachSimplePort": 9229
     }
